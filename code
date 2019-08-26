@@ -1,0 +1,48 @@
+function matrixElementsSum(matrix) {
+    //variables to be used in solving the task
+    var count = 0;
+    var check;
+    var array;
+ //checks out the time used in the loop   
+ console.time("timer: ")
+    
+    for(var i = 0,j = 0;;){
+        //intitating the arrays inside the array
+        array = matrix[i]
+        //sorting out values that are greater rhan zero
+        check = (array[j]>0) ? true : false;
+        //adds values that have no zero above them
+        if(check){
+            count += array[j];
+            //checks if the array is the final array in the matrix array and there is no any value
+            //in that array that hasn't been checked out
+            if(typeof matrix[i+1] === 'undefined' &&typeof array[j+1] === 'undefined'){
+                break;
+            }
+            //checks if the final array is the final array for the sorting out of
+            //the values to continue systematically in terms of columns
+            //from head to toe
+            if(typeof matrix[i+1] === 'undefined'){
+                i = 0;
+                j++;
+            }else{
+                i++;
+            } 
+        }else{
+            //checks ot if there is any more valuess in the array
+            if(j == array.length-1){
+                if(typeof array[j+1] === 'undefined'){
+                break;
+            }
+            }else{
+                i = 0;
+                j++;
+            }
+        }  
+    }
+    
+console.timeEnd("timer: ")
+    
+    return count;
+    }
+
